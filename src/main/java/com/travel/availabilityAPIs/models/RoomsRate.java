@@ -1,0 +1,63 @@
+package com.travel.availabilityAPIs.models;
+
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+@Entity
+@Table(name = "roomrate")
+public class RoomsRate {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "rateKey")
+    private int rateKey;
+    @Column(name = "rate")
+    private double rate;
+    @Column(name = "startDate")
+    private Timestamp startDate;
+    @Column(name = "endDate")
+    private Timestamp endDate;
+    @OneToOne
+    @JoinColumn(name = "roomsKey")
+    private Rooms roomsDetails;
+    public int getRateKey() {
+        return rateKey;
+    }
+
+    public void setRateKey(int rateKey) {
+        this.rateKey = rateKey;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
+    public void setRate(double rate) {
+        this.rate = rate;
+    }
+
+    public Timestamp getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
+
+    public Timestamp getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Timestamp endDate) {
+        this.endDate = endDate;
+    }
+
+    public Rooms getRoomsDetails() {
+        return roomsDetails;
+    }
+
+    public void setRoomsDetails(Rooms roomsDetails) {
+        this.roomsDetails = roomsDetails;
+    }
+
+
+}

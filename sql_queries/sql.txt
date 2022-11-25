@@ -1,0 +1,55 @@
+create table Location(
+LocationKey int not null unique auto_increment,
+LocationID varchar(255) not null unique,
+PostalCode varchar(255),
+PRIMARY KEY (LocationKey)
+)
+
+
+create table hotel(
+hotelKey int not null unique auto_increment,
+hotelID varchar(255) not null unique,
+phone varchar(255),
+locationKey int,
+
+FOREIGN KEY (locationKey) references location (locationKey) ,
+PRIMARY KEY (hotelKey)
+)
+
+insert into hotel(hotelid,phone,locationkey) values('Galadari','011-3452344',1)
+
+create table roomtype(
+roomTypeKey int not null unique auto_increment,
+roomTypeID varchar(255) not null unique,
+adultCount int,
+infantCount int,
+PRIMARY KEY (roomTypeKey)
+)
+
+insert into roomtype(roomTypeID,adultCount,infantCount,totalFax) values ('Single',1,null,1)
+
+create table rooms(
+roomsKey int not null unique auto_increment,
+roomsCount int,
+roomTypeKey int,
+hotelKey int,
+
+FOREIGN KEY (roomTypeKey) references roomtype (roomTypeKey) ,
+FOREIGN KEY (hotelKey) references hotel (hotelKey) ,
+PRIMARY KEY (roomsKey)
+)
+
+insert into rooms (roomscount,roomTypeKey,hotelKey) values (10 ,1,1);
+
+create table roomrate(
+rateKey int not null unique auto_increment,
+rate double ,
+startDate Date,
+endDate Date,
+roomsKey int,
+
+FOREIGN KEY (roomsKey) references rooms (roomsKey) ,
+PRIMARY KEY (rateKey)
+)
+
+insert into roomrate(rate,startDate,endDate,roomskey) values (100,'2022-10-01','2022-12-31',1);
