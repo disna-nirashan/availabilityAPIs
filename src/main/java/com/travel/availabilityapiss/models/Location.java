@@ -1,4 +1,4 @@
-package com.travel.availabilityAPIs.models;
+package com.travel.availabilityapiss.models;
 
 import javax.persistence.*;
 

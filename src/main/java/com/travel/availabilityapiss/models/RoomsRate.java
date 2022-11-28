@@ -1,4 +1,4 @@
-package com.travel.availabilityAPIs.models;
+package com.travel.availabilityapiss.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -16,9 +16,21 @@ public class RoomsRate {
     private Timestamp startDate;
     @Column(name = "endDate")
     private Timestamp endDate;
-    @OneToOne
-    @JoinColumn(name = "roomsKey")
-    private Rooms roomsDetails;
+
+    @Column(name="roomsKey")
+    private int roomsKey;
+
+    public int getRoomsKey() {
+        return roomsKey;
+    }
+
+    public void setRoomsKey(int roomsKey) {
+        this.roomsKey = roomsKey;
+    }
+
+    //    @OneToOne
+//    @JoinColumn(name = "roomsKey")
+//    private Rooms roomsDetails;
     public int getRateKey() {
         return rateKey;
     }
@@ -51,13 +63,7 @@ public class RoomsRate {
         this.endDate = endDate;
     }
 
-    public Rooms getRoomsDetails() {
-        return roomsDetails;
-    }
 
-    public void setRoomsDetails(Rooms roomsDetails) {
-        this.roomsDetails = roomsDetails;
-    }
 
 
 }

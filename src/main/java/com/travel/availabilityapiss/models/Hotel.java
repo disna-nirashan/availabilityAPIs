@@ -1,4 +1,4 @@
-package com.travel.availabilityAPIs.models;
+package com.travel.availabilityapiss.models;
 
 import javax.persistence.*;
 
@@ -16,10 +16,21 @@ public class Hotel {
     @Column(name = "phone")
     private String phone;
 
+    @Column(name = "locationKey")
+    private int locationKey;
 
-    @ManyToOne
-    @JoinColumn(name = "locationKey")
-    private Location locationDetails;
+    public int getLocationKey() {
+        return locationKey;
+    }
+
+    public void setLocationKey(int locationKey) {
+        this.locationKey = locationKey;
+    }
+
+
+//    @ManyToOne
+//    @JoinColumn(name = "locationKey")
+//    private Location locationDetails;
 
     public int getHotelKey() {
         return hotelKey;
@@ -45,13 +56,7 @@ public class Hotel {
         this.phone = phone;
     }
 
-    public Location getLocationDetails() {
-        return locationDetails;
-    }
 
-    public void setLocationDetails(Location locationDetails) {
-        this.locationDetails = locationDetails;
-    }
 
 
 }

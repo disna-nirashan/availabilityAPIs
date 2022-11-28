@@ -1,7 +1,8 @@
-package com.travel.availabilityAPIs.repositoryies;
+package com.travel.availabilityapiss.repositoryies;
 
-import com.travel.availabilityAPIs.models.RoomsRate;
+import com.travel.availabilityapiss.models.RoomsRate;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoomsRateRepository extends JpaRepository<RoomsRate ,Integer> {
+
 }

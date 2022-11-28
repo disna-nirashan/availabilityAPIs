@@ -1,9 +1,9 @@
-package com.travel.availabilityAPIs.models;
+package com.travel.availabilityapiss.models;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Hotel")
+@Table(name = "RoomType")
 public class RoomType {
 
     @Id

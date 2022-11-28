@@ -1,4 +1,4 @@
-package com.travel.availabilityAPIs.models;
+package com.travel.availabilityapiss.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -11,16 +11,29 @@ public class Allocation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "allocationKey")
     private int allocationKey;
-    @Column(name = "allocationCount")
-    private int allocationCount;
+    @Column(name = "allocatedCount")
+    private int allocatedCount;
     @Column(name = "startDate")
     private Timestamp startDate;
     @Column(name = "endDate")
     private Timestamp endDate;
 
-    @OneToOne
-    @JoinColumn(name = "roomsKey")
-    private Rooms roomsDetails;
+    @Column(name = "roomsKey")
+    private int roomsKey;
+
+    //@OneToOne
+    //@JoinColumn(name = "roomsKey")
+    //private Rooms roomsDetails;
+
+    public int getRoomsKey() {
+        return roomsKey;
+    }
+
+    public void setRoomsKey(int roomsKey) {
+        this.roomsKey = roomsKey;
+    }
+
+
 
     public int getAllocationKey() {
         return allocationKey;
@@ -30,12 +43,12 @@ public class Allocation {
         this.allocationKey = allocationKey;
     }
 
-    public int getAllocationCount() {
-        return allocationCount;
+    public int getAllocatedCount() {
+        return allocatedCount;
     }
 
-    public void setAllocationCount(int allocationCount) {
-        this.allocationCount = allocationCount;
+    public void setAllocatedCount(int allocatedCount) {
+        this.allocatedCount = allocatedCount;
     }
 
     public Timestamp getStartDate() {
@@ -54,13 +67,7 @@ public class Allocation {
         this.endDate = endDate;
     }
 
-    public Rooms getRoomsDetails() {
-        return roomsDetails;
-    }
 
-    public void setRoomsDetails(Rooms roomsDetails) {
-        this.roomsDetails = roomsDetails;
-    }
 
 
 }
