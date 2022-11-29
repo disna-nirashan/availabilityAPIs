@@ -4,17 +4,23 @@ public class ResponeMetaData {
 
     private String status;
 
-    public ResponeMetaData(String status) {
-        this.status = status;
-    }
-
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public ResponeMetaData setStatus(String status) {
+        this.status = status;
+        return this;
+    }
+
+    public ResponeMetaData(String status) {
         this.status = status;
     }
 
+    public static ResponeMetaData create(){
+          return new ResponeMetaData();
+      }
 
+    public ResponeMetaData() {
+    }
 }

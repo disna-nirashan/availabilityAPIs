@@ -10,7 +10,7 @@ public class AvailabilityApIsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AvailabilityApIsApplication.class, args);
-		//System.out.println("availabilityAPIs service running !");
+		System.out.println("availabilityAPIs service running !");
 	}
 
 }

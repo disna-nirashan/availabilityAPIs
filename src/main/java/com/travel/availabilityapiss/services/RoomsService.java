@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -27,13 +29,14 @@ public class RoomsService {
 
     public SearchResponse getRoomsAvailability(int locationKey , int adultCount , int infantCount , Timestamp fromDate, Timestamp toDate){
         var totalFax=adultCount+infantCount;
-        List<Integer> roomTypeList= roomTypeRepo.findRoomTypes(adultCount,totalFax);
+        List<Integer> roomTypeList= roomTypeRepo.findRoomTypes(adultCount,infantCount,totalFax);
 
         var finalQueryResult=allocationRepo.finalResult(roomTypeList,locationKey,fromDate,toDate);
 
        SearchResponse searchResponse=new SearchResponse();
        if(!roomTypeList.isEmpty()){
-           searchResponse.setData(finalQueryResult);
+           var sortedList= finalQueryResult.stream().sorted(Comparator.comparingDouble(SearchQueryResult::getRoom_rate)).collect(Collectors.toList());
+           searchResponse.setData(sortedList);
            searchResponse.setMetaData(new ResponeMetaData("Success"));
        }else{
 

@@ -12,27 +12,34 @@ public class SearchResponse {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private ErrorData errorData;
 
+    public static SearchResponse create(){
+       return new SearchResponse();
+    }
+
     public ResponeMetaData getMetaData() {
         return metaData;
     }
 
-    public void setMetaData(ResponeMetaData metaData) {
+    public SearchResponse setMetaData(ResponeMetaData metaData) {
         this.metaData = metaData;
+        return this;
     }
 
     public List<SearchQueryResult> getData() {
         return data;
     }
 
-    public void setData(List<SearchQueryResult> data) {
+    public SearchResponse setData(List<SearchQueryResult> data) {
         this.data = data;
+        return this;
     }
 
     public ErrorData getErrorData() {
         return errorData;
     }
 
-    public void setErrorData(ErrorData errorData) {
+    public SearchResponse setErrorData(ErrorData errorData) {
         this.errorData = errorData;
+        return this;
     }
 }
