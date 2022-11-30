@@ -10,6 +10,17 @@ public class ResponeMetaData {
 
     private String status;
 
+    public ResponeMetaData(String status) {
+        this.status = status;
+    }
+
+    public ResponeMetaData() {
+    }
+
+    public static ResponeMetaData create() {
+        return new ResponeMetaData();
+    }
+
     public String getStatus() {
         return status;
     }
@@ -17,16 +28,5 @@ public class ResponeMetaData {
     public ResponeMetaData setStatus(String status) {
         this.status = status;
         return this;
-    }
-
-    public ResponeMetaData(String status) {
-        this.status = status;
-    }
-
-    public static ResponeMetaData create(){
-          return new ResponeMetaData();
-      }
-
-    public ResponeMetaData() {
     }
 }

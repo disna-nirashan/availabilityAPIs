@@ -1,20 +1,6 @@
-
 package com.travel.availabilityapiss;
 
-import com.travel.availabilityapiss.controllers.RoomsController;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.sql.Array;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 class SearchTest {
@@ -242,7 +228,6 @@ class SearchTest {
 //
 //
 //	}
-
 
 
 }

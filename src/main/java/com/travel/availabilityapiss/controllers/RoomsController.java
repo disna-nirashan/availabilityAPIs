@@ -1,6 +1,7 @@
 package com.travel.availabilityapiss.controllers;
 
 import com.travel.availabilityapiss.models.ErrorData;
+import com.travel.availabilityapiss.models.Location;
 import com.travel.availabilityapiss.models.ResponeMetaData;
 import com.travel.availabilityapiss.models.SearchResponse;
 import com.travel.availabilityapiss.repositoryies.LocationRepository;
@@ -21,6 +22,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Optional;
 
 
 @RestController
@@ -53,7 +56,9 @@ public class RoomsController {
             @ApiParam(name = "ToDate", value = "Check out Date", example = "2022-12-11 00:00:00") @NotNull @RequestParam(value = "ToDate") Timestamp toDate
     ) {
         var loc = locationRepo.findBylocationKey(locationKey);
-        if (loc == null) {
+        // loc is Location type variable when it's empty or null then send object not found (404) as response
+        Optional<Location> checkLocNull = Optional.ofNullable(loc);
+        if (checkLocNull.isEmpty()) {
 
             return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError("LocationKey not found in system !")).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)), HttpStatus.NOT_FOUND);
         }
@@ -85,8 +90,12 @@ public class RoomsController {
     private ResponseEntity<SearchResponse> checkDatewithCurrentDate(Timestamp checkingDat, String fieldName) {
 
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd 00:00:00.000").format(new java.util.Date());
-        var currentTs = Timestamp.valueOf(timeStamp);
-        if (currentTs.compareTo(checkingDat) > 0) {
+        Calendar paramDate = Calendar.getInstance();
+        paramDate.setTime(checkingDat);
+        Calendar currentDate = Calendar.getInstance();
+        currentDate.setTime(Timestamp.valueOf(timeStamp));
+        System.out.println(currentDate.compareTo(paramDate));
+        if (currentDate.compareTo(paramDate) > 0) {
             return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(fieldName + " can't be a past Date !")).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)), HttpStatus.BAD_REQUEST);
 
         }
@@ -94,7 +103,11 @@ public class RoomsController {
     }
 
     private ResponseEntity<SearchResponse> checkfromDateAndToDate(Timestamp fromDate, Timestamp toDate) {
-        if (fromDate.compareTo(toDate) > 0) {
+        Calendar fromDateParam = Calendar.getInstance();
+        fromDateParam.setTime(fromDate);
+        Calendar toDateParam = Calendar.getInstance();
+        toDateParam.setTime(toDate);
+        if (fromDateParam.compareTo(toDateParam) > 0) {
             return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError("ToDate can't be a past than FromDate !")).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)), HttpStatus.BAD_REQUEST);
 
         }

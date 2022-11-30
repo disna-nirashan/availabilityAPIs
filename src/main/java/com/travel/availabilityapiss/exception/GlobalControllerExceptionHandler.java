@@ -17,12 +17,13 @@ import javax.validation.ConstraintViolationException;
 public class GlobalControllerExceptionHandler {
 
     private static final String FAILED_STATUS = "Failed";
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<SearchResponse> handleContraintViolationException(ConstraintViolationException ex) {
 
 
-        return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(ex.getMessage())).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)),HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(ex.getMessage())).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)), HttpStatus.BAD_REQUEST);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -30,7 +31,7 @@ public class GlobalControllerExceptionHandler {
     public ResponseEntity<SearchResponse> handleMissingServletRequestParameterException(MissingServletRequestParameterException ex) {
 
 
-        return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(String.valueOf("Required request parameter '"+ex.getParameterName()+"' not found !"))).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)),HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(String.valueOf("Required request parameter '" + ex.getParameterName() + "' not found !"))).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)), HttpStatus.BAD_REQUEST);
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -38,6 +39,6 @@ public class GlobalControllerExceptionHandler {
     public ResponseEntity<SearchResponse> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex) {
 
 
-        return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(String.valueOf(ex.getName()+" required type : "+ex.getRequiredType()))).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)),HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(String.valueOf(ex.getName() + " required type : " + ex.getRequiredType()))).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)), HttpStatus.BAD_REQUEST);
     }
 }

@@ -34,13 +34,7 @@ public class Rooms {
         this.hotelKey = hotelKey;
     }
 
-    //    @ManyToOne
-//    @JoinColumn(name = "roomTypeKey")
-//    private RoomType roomTypeDetails;
 
-//    @ManyToOne
-//    @JoinColumn(name = "hotelKey")
-//    private Hotel hotelDetails;
 
     public int getRoomsKey() {
         return roomsKey;
@@ -57,10 +51,6 @@ public class Rooms {
     public void setRoomsCount(int roomsCount) {
         this.roomsCount = roomsCount;
     }
-
-
-
-
 
 
 }

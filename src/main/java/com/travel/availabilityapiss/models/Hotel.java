@@ -8,8 +8,8 @@ public class Hotel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="hotelKey")
-    private  int hotelKey;
+    @Column(name = "hotelKey")
+    private int hotelKey;
 
     @Column(name = "hotelID")
     private String hotelID;
@@ -55,8 +55,6 @@ public class Hotel {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-
 
 
 }

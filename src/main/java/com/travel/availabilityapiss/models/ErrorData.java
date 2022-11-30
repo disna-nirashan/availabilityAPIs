@@ -9,15 +9,16 @@ public class ErrorData {
     @ApiModelProperty(notes = "Error ")
 
     private String error;
-    public static ErrorData create(){
-        return new ErrorData();
-    }
 
     public ErrorData() {
     }
 
     public ErrorData(String error) {
         this.error = error;
+    }
+
+    public static ErrorData create() {
+        return new ErrorData();
     }
 
     public String getError() {

@@ -19,8 +19,8 @@ public class SearchResponse {
     @ApiModelProperty(notes = "Error data of the response")
     private ErrorData errorData;
 
-    public static SearchResponse create(){
-       return new SearchResponse();
+    public static SearchResponse create() {
+        return new SearchResponse();
     }
 
     public ResponeMetaData getMetaData() {

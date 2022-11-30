@@ -10,7 +10,7 @@ public class RoomType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "roomTypeKey")
     private int roomTypeKey;
-    @Column (name = "roomTypeID")
+    @Column(name = "roomTypeID")
     private String roomTypeID;
     @Column(name = "adultCount")
     private int adultCount;
@@ -58,7 +58,6 @@ public class RoomType {
     public void setTotalFax(int totalFax) {
         this.totalFax = totalFax;
     }
-
 
 
 }

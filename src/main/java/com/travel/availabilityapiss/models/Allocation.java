@@ -34,7 +34,6 @@ public class Allocation {
     }
 
 
-
     public int getAllocationKey() {
         return allocationKey;
     }
@@ -66,8 +65,6 @@ public class Allocation {
     public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }
-
-
 
 
 }

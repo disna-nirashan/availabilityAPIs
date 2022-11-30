@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="locationKey")
-    private  int locationKey;
+    @Column(name = "locationKey")
+    private int locationKey;
 
     @Column(name = "locationID")
     private String locationID;
@@ -25,7 +25,6 @@ public class Location {
     }
 
 
-
     public String getLocationID() {
         return locationID;
     }
@@ -35,8 +34,6 @@ public class Location {
     }
 
 
-
-
     public int getLocationKey() {
         return locationKey;
     }
@@ -44,7 +41,6 @@ public class Location {
     public void setLocationKey(int locationKey) {
         this.locationKey = locationKey;
     }
-
 
 
 }

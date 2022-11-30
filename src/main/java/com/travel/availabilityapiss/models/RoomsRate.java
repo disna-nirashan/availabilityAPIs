@@ -17,7 +17,7 @@ public class RoomsRate {
     @Column(name = "endDate")
     private Timestamp endDate;
 
-    @Column(name="roomsKey")
+    @Column(name = "roomsKey")
     private int roomsKey;
 
     public int getRoomsKey() {
@@ -62,8 +62,6 @@ public class RoomsRate {
     public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }
-
-
 
 
 }

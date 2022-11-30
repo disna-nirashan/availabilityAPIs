@@ -19,40 +19,41 @@ import java.util.Collections;
 @EnableCaching
 @SpringBootApplication
 @EnableSwagger2
-public class AvailabilityApIsApplication  extends SpringBootServletInitializer {
+public class AvailabilityApIsApplication extends SpringBootServletInitializer {
 //public class AvailabilityApIsApplication   {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AvailabilityApIsApplication.class, args);
-		System.out.println("availabilityAPIs service running !");
+    public static void main(String[] args) {
+        SpringApplication.run(AvailabilityApIsApplication.class, args);
+        System.out.println("availabilityAPIs service running !");
 
-	}
+    }
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		return builder.sources(AvailabilityApIsApplication.class);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(AvailabilityApIsApplication.class);
+    }
 
-	@Bean
-	public Docket swaggerConfiguration(){
-		return  new Docket(DocumentationType.SWAGGER_2)
-				.select()
-				.paths(PathSelectors.ant("/availability"))
-				.apis(RequestHandlerSelectors.basePackage("com.travel"))
-				.build()
-				.apiInfo(apiDetails());
-	}
-	private ApiInfo apiDetails(){
-		return new ApiInfo(
-				"Rooms Availability API",
-				"Sample API for Hotel Rooms Availability",
-				"1.0",
-				"Free to use",
-				new springfox.documentation.service.Contact("Disna","http://127.0.0.1:8080/swagger-ui.html#/rooms-controller","abc@gmail.com"),
-				"API License",
-				"http://127.0.0.1:8080/swagger-ui.html#/rooms-controller",
-				Collections.emptyList()
-		);
-	}
+    @Bean
+    public Docket swaggerConfiguration() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .paths(PathSelectors.ant("/availability"))
+                .apis(RequestHandlerSelectors.basePackage("com.travel"))
+                .build()
+                .apiInfo(apiDetails());
+    }
+
+    private ApiInfo apiDetails() {
+        return new ApiInfo(
+                "Rooms Availability API",
+                "Sample API for Hotel Rooms Availability",
+                "1.0",
+                "Free to use",
+                new springfox.documentation.service.Contact("Disna", "http://127.0.0.1:8080/swagger-ui.html#/rooms-controller", "abc@gmail.com"),
+                "API License",
+                "http://127.0.0.1:8080/swagger-ui.html#/rooms-controller",
+                Collections.emptyList()
+        );
+    }
 
 }
