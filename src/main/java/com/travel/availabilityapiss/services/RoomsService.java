@@ -28,6 +28,7 @@ public class RoomsService {
     private  AllocationRepository allocationRepo;
 
     public SearchResponse getRoomsAvailability(int locationKey , int adultCount , int infantCount , Timestamp fromDate, Timestamp toDate){
+
         var totalFax=adultCount+infantCount;
         List<Integer> roomTypeList= roomTypeRepo.findRoomTypes(adultCount,infantCount,totalFax);
 
@@ -35,17 +36,19 @@ public class RoomsService {
 
        SearchResponse searchResponse=new SearchResponse();
        if(!roomTypeList.isEmpty()){
-           var sortedList= finalQueryResult.stream().sorted(Comparator.comparingDouble(SearchQueryResult::getRoom_rate)).collect(Collectors.toList());
+           var sortedList= finalQueryResult.stream().sorted(Comparator.comparingDouble(SearchQueryResult::getroomRate)).collect(Collectors.toList());
            searchResponse.setData(sortedList);
            searchResponse.setMetaData(new ResponeMetaData("Success"));
        }else{
 
 
-           searchResponse.setErrorData(new ErrorData("No data matched !"));
+           searchResponse.setErrorData(new ErrorData("Passengers count doesn't match with any rooms !"));
            searchResponse.setMetaData(new ResponeMetaData("Failed"));
         }
 
 
         return searchResponse;
     }
+
+
 }

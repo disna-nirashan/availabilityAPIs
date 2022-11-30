@@ -16,4 +16,6 @@ class AvailabilityApIsApplicationTests {
 //		System.out.println(x);
 //	}
 
+
+
 }
