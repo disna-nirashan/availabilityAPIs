@@ -6,9 +6,8 @@ import com.travel.availabilityapiss.models.SearchResponse;
 import com.travel.availabilityapiss.repositoryies.LocationRepository;
 import com.travel.availabilityapiss.services.RoomsService;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -18,12 +17,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 
 @RestController
 @Validated
 public class RoomsController {
+    private static final String FAILED_STATUS = "Failed";
     @Autowired
     RoomsService roomsService;
     @Autowired
@@ -43,8 +43,8 @@ public class RoomsController {
     ){
         var loc=locationRepo.findBylocationKey(locationKey);
         if(loc==null){
-            //System.out.println(loc);
-            return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError("LocationKey not found in system !")).setMetaData(ResponeMetaData.create().setStatus("Failed")),HttpStatus.NOT_FOUND);
+
+            return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError("LocationKey not found in system !")).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)),HttpStatus.NOT_FOUND);
         }
         var fromDateCheck=checkDatewithCurrentDate(fromDate,"FromDate");
         if(fromDateCheck!=null){
@@ -65,8 +65,8 @@ public class RoomsController {
             returnResponce =roomsService.getRoomsAvailability(locationKey,adultCount,infantCount,fromDate,toDate);
             return new ResponseEntity<>(returnResponce ,HttpStatus.OK);
         }catch(Throwable t){
-            return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError("Internal Server Error !")).setMetaData(ResponeMetaData.create().setStatus("Failed")),HttpStatus.INTERNAL_SERVER_ERROR);
-            //return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(t.getMessage())).setMetaData(ResponeMetaData.create().setStatus("Faild")),HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError("Internal Server Error !")).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)),HttpStatus.INTERNAL_SERVER_ERROR);
+
         }
 
     }
@@ -76,16 +76,16 @@ public class RoomsController {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd 00:00:00.000").format(new java.util.Date());
         var currentTs = Timestamp.valueOf(timeStamp);
         if(currentTs.compareTo(checkingDat)>0){
-            return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(fieldName+" can't be a past Date !")).setMetaData(ResponeMetaData.create().setStatus("Failed")), HttpStatus.BAD_REQUEST);
-            //System.out.println(currentTs+" fd-> "+checkingDat);
+            return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(fieldName+" can't be a past Date !")).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)), HttpStatus.BAD_REQUEST);
+
         }
         return null;
     }
 
     private ResponseEntity<SearchResponse> checkfromDateAndToDate(Timestamp fromDate,Timestamp toDate){
         if(fromDate.compareTo(toDate)>0){
-            return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError("ToDate can't be a past than FromDate !")).setMetaData(ResponeMetaData.create().setStatus("Failed")), HttpStatus.BAD_REQUEST);
-            //System.out.println(currentTs+" fd-> "+checkingDat);
+            return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError("ToDate can't be a past than FromDate !")).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)), HttpStatus.BAD_REQUEST);
+
         }
         return null;
     }
