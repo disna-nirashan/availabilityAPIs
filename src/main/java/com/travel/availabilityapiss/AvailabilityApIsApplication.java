@@ -20,7 +20,7 @@ import java.util.Collections;
 @SpringBootApplication
 @EnableSwagger2
 public class AvailabilityApIsApplication extends SpringBootServletInitializer {
-//public class AvailabilityApIsApplication   {
+
 
     public static void main(String[] args) {
         SpringApplication.run(AvailabilityApIsApplication.class, args);

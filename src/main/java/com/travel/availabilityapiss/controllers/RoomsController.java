@@ -94,7 +94,6 @@ public class RoomsController {
         paramDate.setTime(checkingDat);
         Calendar currentDate = Calendar.getInstance();
         currentDate.setTime(Timestamp.valueOf(timeStamp));
-        System.out.println(currentDate.compareTo(paramDate));
         if (currentDate.compareTo(paramDate) > 0) {
             return new ResponseEntity<>(SearchResponse.create().setErrorData(ErrorData.create().setError(fieldName + " can't be a past Date !")).setMetaData(ResponeMetaData.create().setStatus(FAILED_STATUS)), HttpStatus.BAD_REQUEST);
 

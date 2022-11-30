@@ -21,9 +21,6 @@ public class Allocation {
     @Column(name = "roomsKey")
     private int roomsKey;
 
-    //@OneToOne
-    //@JoinColumn(name = "roomsKey")
-    //private Rooms roomsDetails;
 
     public int getRoomsKey() {
         return roomsKey;

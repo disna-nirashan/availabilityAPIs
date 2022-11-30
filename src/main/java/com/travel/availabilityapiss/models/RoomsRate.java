@@ -28,9 +28,7 @@ public class RoomsRate {
         this.roomsKey = roomsKey;
     }
 
-    //    @OneToOne
-//    @JoinColumn(name = "roomsKey")
-//    private Rooms roomsDetails;
+
     public int getRateKey() {
         return rateKey;
     }

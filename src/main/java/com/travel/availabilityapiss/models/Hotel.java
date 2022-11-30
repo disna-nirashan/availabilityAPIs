@@ -28,10 +28,6 @@ public class Hotel {
     }
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "locationKey")
-//    private Location locationDetails;
-
     public int getHotelKey() {
         return hotelKey;
     }
