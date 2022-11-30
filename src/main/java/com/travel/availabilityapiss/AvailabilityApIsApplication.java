@@ -15,6 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Collections;
 
+
 @EnableCaching
 @SpringBootApplication
 @EnableSwagger2
@@ -24,6 +25,7 @@ public class AvailabilityApIsApplication  extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(AvailabilityApIsApplication.class, args);
 		System.out.println("availabilityAPIs service running !");
+
 	}
 
 	@Override
