@@ -5,6 +5,8 @@ import com.travel.availabilityapiss.models.ResponeMetaData;
 import com.travel.availabilityapiss.models.SearchResponse;
 import com.travel.availabilityapiss.repositoryies.LocationRepository;
 import com.travel.availabilityapiss.services.RoomsService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Contact;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -28,6 +30,10 @@ public class RoomsController {
     LocationRepository locationRepo;
 
     @GetMapping("/availability")
+    @ApiOperation(value = "Find hotel rooms availability for your details"
+    ,notes = "Provide relevent correct data "
+            ,response = SearchResponse.class
+    )
     public ResponseEntity<SearchResponse>  getRoomsAvailability (
             @NotNull @RequestParam(value ="LocationKey") Integer locationKey,
             @NotNull @Min(1) @RequestParam(value = "AdultCount") Integer adultCount,

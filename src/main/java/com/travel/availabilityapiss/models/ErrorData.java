@@ -1,6 +1,12 @@
 package com.travel.availabilityapiss.models;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Error data of the api call")
+
 public class ErrorData {
+    @ApiModelProperty(notes = "Error ")
 
     private String error;
     public static ErrorData create(){

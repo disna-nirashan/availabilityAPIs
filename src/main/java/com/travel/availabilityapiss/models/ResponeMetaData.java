@@ -1,6 +1,12 @@
 package com.travel.availabilityapiss.models;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Meta data of the api call")
+
 public class ResponeMetaData {
+    @ApiModelProperty(notes = "Status of response")
 
     private String status;
 
