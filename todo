@@ -1,0 +1,14 @@
+
+-- dependency
+os - linux (less resources, free, easy to manage)
+which linux - support, lightweight, where we deploy, amazon linux, debian
+java - 11
+copy jar
+
+-- parameterize
+db params
+
+
+-- suitable parent image
+
+

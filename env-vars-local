@@ -1,0 +1,5 @@
+DB_HOST=192.168.1.6
+DB_PORT=5432
+DB_NAME=avail_test
+DB_USER=postgres
+DB_PASS=abcd#1234
